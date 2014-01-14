@@ -149,26 +149,39 @@ class Pebble(object):
 				end tell'		
 				"""
 		],
-                "POWERPOINT": [
-                                """
-                                osascript -e 'tell application "Microsoft PowerPoint"
+        "POWERPOINT": [
+                """
+                osascript -e 'tell application "Microsoft PowerPoint"
 					activate
 					run slide show slide show settings of active presentation
-                                end tell'
-                                """,
-                                """
-                                osascript -e 'tell application "Microsoft PowerPoint"
+                end tell'
+                """,
+                """
+                osascript -e 'tell application "Microsoft PowerPoint"
 					activate
 					go to next slide slide show view of slide show window 1
-                                end tell'
-                                """,
-                                """
-                                osascript -e 'tell application "Microsoft PowerPoint"
-                                       activate
-                                       go to previous slide slide show view of slide show window 1
-                                end tell'
-                                """
-                ] 
+                end tell'
+                """,
+                """
+                osascript -e 'tell application "Microsoft PowerPoint"
+                   activate
+                   go to previous slide slide show view of slide show window 1
+                end tell'
+                """
+        ],
+        "SPOTIFY": [
+    			"""
+    			osascript -e 'tell application "Spotify" to playpause'
+    			""",
+    			"""
+    			osascript -e 'tell application "Spotify" to next track'
+    			""",
+    			"""
+    			osascript -e 'tell application "Spotify" to previous track'
+    			"""
+    	]
+
+
 	}
 
 	endpoints = {
@@ -537,7 +550,8 @@ class Pebble(object):
 		app_string = {
 			"ITUNES" : "iTunes",
 			"KEYNOTE" : "Keynote",
-			"POWERPOINT" : "PowerPoint"
+			"POWERPOINT" : "PowerPoint",
+			"SPOTIFY" : "Spotify"
 		}
 		self._remote_app = remote_app.upper()
 		log.info("Remote: Control " + app_string[self._remote_app] + " with Pebble" )
